@@ -1,4 +1,0 @@
-FROM nginx
-COPY localhost /etc/nginx/sites-available/localhost
-RUN mkdir /etc/nginx/sites-enabled && ln -s /etc/nginx/sites-available/localhost /etc/nginx/sites-enabled/localhost
-EXPOSE 8089
