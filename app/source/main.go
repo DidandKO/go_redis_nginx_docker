@@ -40,7 +40,9 @@ func main() {
 		key := r.URL.Query().Get("key")
 		val, err := client.Get(ctx, key).Result()
 		if err != nil {
-    			panic(err)
+			w.WriteHeader(http.StatusNotFound)
+			fmt.Fprintf(w, "404" )
+    			return
 		}
 		fmt.Fprintf(w, val)
 	})
