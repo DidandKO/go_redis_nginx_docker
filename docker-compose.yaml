@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  redis:
+    restart: on-failure
+    build: ./redis
+    hostname: redis
+    ports:
+      - '6379:6379'
+  app:
+    restart: on-failure
+    build: ./app
+    ports:
+      - '81:9990'
+    links:
+      - redis
+  nginx:
+    build: ./nginx
+    ports:
+      - '80:80'
+    depends_on:
+      - app
